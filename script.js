@@ -3,30 +3,37 @@ const suggestions = document.querySelector('.suggestions ul');
 
 const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry', 'Boysenberry', 'Currant', 'Cherry', 'Coconut', 'Cranberry', 'Cucumber', 'Custard apple', 'Damson', 'Date', 'Dragonfruit', 'Durian', 'Elderberry', 'Feijoa', 'Fig', 'Gooseberry', 'Grape', 'Raisin', 'Grapefruit', 'Guava', 'Honeyberry', 'Huckleberry', 'Jabuticaba', 'Jackfruit', 'Jambul', 'Juniper berry', 'Kiwifruit', 'Kumquat', 'Lemon', 'Lime', 'Loquat', 'Longan', 'Lychee', 'Mango', 'Mangosteen', 'Marionberry', 'Melon', 'Cantaloupe', 'Honeydew', 'Watermelon', 'Miracle fruit', 'Mulberry', 'Nectarine', 'Nance', 'Olive', 'Orange', 'Clementine', 'Mandarine', 'Tangerine', 'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Plantain', 'Plum', 'Pineapple', 'Pomegranate', 'Pomelo', 'Quince', 'Raspberry', 'Salmonberry', 'Rambutan', 'Redcurrant', 'Salak', 'Satsuma', 'Soursop', 'Star fruit', 'Strawberry', 'Tamarillo', 'Tamarind', 'Yuzu'];
 
-// TODO
+// Revisit
 function search(str) {
 	let results = [];
-	let val = str.toLowerCase();
+	let inputVal = str.toLowerCase();
 	if (str === '') {
 		return;
 	} else {
 	  results = fruit.filter(function(fruit){
-		return fruit.toLowerCase().includes(val)
+		return fruit.toLowerCase().includes(inputVal)
 	  });
     console.log(results);
-	return results;
+	showSuggestions(results);
     }
 }
 
-//Probably done?
+//Results gets updated twice when pressing shift for capital letter
 function searchHandler(e) {
-	let userInput = input.value;
-	console.log(userInput);
-	search(userInput);
+	search(input.value);
 }
 
-function showSuggestions(results, inputVal) {
-    // shows suggestions in dropdown based on keystrokes
+// shows suggestions in dropdown based on keystrokes
+// need option to remove li if removing letters
+
+// OG code: function showSuggestions(results, inputVal)
+function showSuggestions(results) {
+	results.forEach(function(fruit){
+	const li= document.createElement('li');
+	li.innerText = fruit;
+	suggestions.appendChild(li);
+	});
+	
 }
 
 function useSuggestion(e) {
