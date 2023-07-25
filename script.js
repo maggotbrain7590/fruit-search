@@ -5,22 +5,20 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 
 function search(str) {
 	let results = [];
-
+	let val = str;
+	results = fruit.filter(function(fruit){
+		return fruit.includes(val)
+	});
+    
 	// TODO
-
+    console.log(results);
 	return results;
 }
 
 function searchHandler(e) {
-	let keyPress = [e.key].toString();
-	if (keyPress.length > 1) {
-		return;
-	} else {
-      let char = keyPress.toLowerCase();
-	  console.log(char);
-	  return char;
-	}
-		
+	let userInput = input.value.toLowerCase();
+	console.log(userInput);
+	search(userInput);
 }
 
 function showSuggestions(results, inputVal) {
