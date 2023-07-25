@@ -12,16 +12,23 @@ function search(str) {
 }
 
 function searchHandler(e) {
-	// TODO
+	let keyPress = [e.key].toString();
+	if (keyPress.length > 1) {
+		return;
+	} else {
+      let char = keyPress.toLowerCase();
+	  console.log(char);
+	  return char;
+	}
+		
 }
 
 function showSuggestions(results, inputVal) {
-
-	// TODO
+    // shows suggestions in dropdown based on keystrokes
 }
 
 function useSuggestion(e) {
-	// TODO
+	// handles click on suggestion
 }
 
 input.addEventListener('keyup', searchHandler);
