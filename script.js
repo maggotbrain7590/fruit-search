@@ -13,14 +13,19 @@ function search(str) {
 	    results = fruit.filter(function(fruit){
 		return fruit.toLowerCase().includes(inputVal)
 	    });
-    console.log(results);
 	showSuggestions(results);
     }
 }
 
-//Results gets updated twice when pressing shift for capital letter
 function searchHandler(e) {
-	search(input.value);
+	const keyCode = [e.key].toString();
+	if (keyCode === 'Backspace' && input.value === '') {
+		suggestions.innerHTML = '';
+		} else {
+			search(input.value);
+		}
+	console.log(keyCode);
+	
 }
 
 // shows suggestions in dropdown based on keystrokes
@@ -36,6 +41,9 @@ function showSuggestions(results) {
 	  suggestions.appendChild(li);
 	  const fruitSuggestions = document.querySelectorAll('li');
 	  });
+	  if (input.value = '') {
+		suggestions.innerHTML = '';
+	  }
     } else {
         suggestions.innerHTML = '';
 		results.forEach(function(fruit){
