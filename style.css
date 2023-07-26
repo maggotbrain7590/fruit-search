@@ -41,11 +41,11 @@ ul.has-suggestions {
 }
 
 ul li {
-  /* TODO */
+  list-style-type: none;
 }
 
 ul li:hover {
-  /* TODO */
+  background-color: rgb(255, 111, 0);
 }
 
 input {
