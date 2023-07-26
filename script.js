@@ -9,10 +9,10 @@ function search(str) {
 	let inputVal = str.toLowerCase();
 	if (str === '') {
 		return;
-	} else {
-	  results = fruit.filter(function(fruit){
+    } else {
+	    results = fruit.filter(function(fruit){
 		return fruit.toLowerCase().includes(inputVal)
-	  });
+	    });
     console.log(results);
 	showSuggestions(results);
     }
@@ -27,13 +27,23 @@ function searchHandler(e) {
 // need option to remove li if removing letters
 
 // OG code: function showSuggestions(results, inputVal)
+const li = document.getElementsByTagName('li');
 function showSuggestions(results) {
-	results.forEach(function(fruit){
-	const li= document.createElement('li');
-	li.innerText = fruit;
-	suggestions.appendChild(li);
-	});
-	
+	if (!li) {
+	  results.forEach(function(fruit){
+	  const li= document.createElement('li');
+	  li.innerText = fruit;
+	  suggestions.appendChild(li);
+	  const fruitSuggestions = document.querySelectorAll('li');
+	  });
+    } else {
+        suggestions.innerHTML = '';
+		results.forEach(function(fruit){
+			const fruitItem = document.createElement('li');
+			fruitItem.innerText = fruit;
+			suggestions.appendChild(fruitItem);
+			});
+	}
 }
 
 function useSuggestion(e) {
@@ -42,3 +52,4 @@ function useSuggestion(e) {
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
+
